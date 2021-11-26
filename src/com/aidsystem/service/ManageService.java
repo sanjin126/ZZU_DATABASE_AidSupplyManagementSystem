@@ -1,7 +1,7 @@
 package com.aidsystem.service;
 
 import java.sql.Connection;
-
+import java.sql.SQLException;
 
 import com.aidsystem.bean.TranPerson;
 import com.aidsystem.bean.Volunteer;
@@ -87,11 +87,16 @@ public class ManageService {
 					StringUtils.removeUnimportantChar(numberPlate).toUpperCase()
 					);
 			TranPersonDAOImpl trpDao = new TranPersonDAOImpl();
-			trpDao.insert(conn, trp);
+			TranPerson isExit = trpDao.getByNumplate(conn, StringUtils.removeUnimportantChar(numberPlate).toUpperCase());
+			if (isExit == null) {
+				trpDao.insert(conn, trp);
+			} else {
+				throw new SQLException();
+			}
 		} catch (NumberFormatException e) {
 			throw new Exception("请在年龄一栏输入正确的数字哦");
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (SQLException e) {
+			throw new Exception("请检查车牌号，与目前运输人员有重复");
 		}finally {
 			JDBCUtils.closeConnection(conn, null);
 			

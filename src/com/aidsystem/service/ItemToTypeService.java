@@ -22,6 +22,11 @@ public class ItemToTypeService {
 					dao.insert(conn, itemToType);	
 				}
 			}
+			else {
+				String unit = StringUtils.getOnlyStringFromString(quantity);
+				itt.setUnit(unit);
+				dao.updateItt(conn, itt);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

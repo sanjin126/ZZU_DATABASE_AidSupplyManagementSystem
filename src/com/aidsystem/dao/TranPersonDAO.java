@@ -60,4 +60,6 @@ public interface TranPersonDAO {
 	ResultSet getResultSetOfAll(Connection conn);
 	
 	ResultSet getResultSetOfFreePerson(Connection conn);
+
+	TranPerson getByNumplate(Connection conn, String numplate);
 }

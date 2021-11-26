@@ -107,11 +107,11 @@ public class LoginFrame extends JFrame{
 }
 
 class rgtFrame extends JFrame{
-	private Box hbox1 = Box.createHorizontalBox();
-	private Box hbox2 = Box.createHorizontalBox();
-	private Box hbox3 = Box.createHorizontalBox();
-	private Box hbox4 = Box.createHorizontalBox();
-	private Box hbox5 = Box.createHorizontalBox();
+//	private Box hbox1 = Box.createHorizontalBox();
+//	private Box hbox2 = Box.createHorizontalBox();
+//	private Box hbox3 = Box.createHorizontalBox();
+//	private Box hbox4 = Box.createHorizontalBox();
+//	private Box hbox5 = Box.createHorizontalBox();
 	private JPanel p1 = new JPanel(null);
 	private JPanel p2 = new JPanel(null);
 	private JPanel p3 = new JPanel(null);

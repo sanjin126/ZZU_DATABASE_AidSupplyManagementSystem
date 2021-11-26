@@ -41,12 +41,14 @@ public class AidDemSplitPanel {
 	private JLabel lblAidId = new JLabel("救援物资ID：");
 	private JLabel lblDemId = new JLabel("需求物资ID：");
 	private JTextField tfAidId = new JTextField(5);
+	private JTextField tfAidName = new JTextField(5);
 	private JTextField tfDemId = new JTextField(5);
+	private JTextField tfDemName = new JTextField(5);
 	private JButton btnDistribute = new JButton("分配", 
 			UIUtils.setImageSize(new ImageIcon("image/分配.png"), 20, 20));
-	{bottomPanel.add(lblAidId);bottomPanel.add(tfAidId);
+	{bottomPanel.add(lblAidId);bottomPanel.add(tfAidId);bottomPanel.add(tfAidName);
 	btnDistribute.setHorizontalTextPosition(SwingConstants.LEFT);;bottomPanel.add(btnDistribute);
-	bottomPanel.add(lblDemId);bottomPanel.add(tfDemId);}
+	bottomPanel.add(lblDemId);bottomPanel.add(tfDemId);bottomPanel.add(tfDemName);}
 	//运输人员选择框
 	private JFrame perFrame;
 	private JPanel perBotmPanel;
@@ -69,8 +71,8 @@ public class AidDemSplitPanel {
 		demTablePanel.add(demTitle, BorderLayout.NORTH);
 		demTablePanel.add(new JScrollPane(demTable));
 		
-		aidTable.addMouseListener(UIUtils.getTableClickListener(tfAidId));
-		demTable.addMouseListener(UIUtils.getTableClickListener(tfDemId));
+		aidTable.addMouseListener(UIUtils.getTableClickListener(tfAidId,tfAidName));
+		demTable.addMouseListener(UIUtils.getTableClickListener(tfDemId,tfDemName));
 		btnDistribute.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

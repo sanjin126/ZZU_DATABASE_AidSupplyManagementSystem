@@ -132,12 +132,14 @@ public class ManageTrPersonPanel {
 			btnDelete.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (!UIUtils.isTextEmpty(tftrPId)) {
-						int result = JOptionPane.showConfirmDialog(trPersonFrame, "是否确认删除", "删除志愿者", JOptionPane.YES_NO_OPTION);
+						int result = JOptionPane.showConfirmDialog(trPersonFrame, "是否确认删除", "删除", JOptionPane.YES_NO_OPTION);
 						if (result == JOptionPane.YES_OPTION) {
-							ManageService.deleteVol(tftrPId.getText());
+							ManageService.deleteTrp(tftrPId.getText());
 							new ManageTrPersonPanel().init(jf);
 							trPersonFrame.dispose();
 						}			
+					} else {
+						JOptionPane.showMessageDialog(trPersonFrame, "请选择一位运输人员");
 					}
 				}
 			});

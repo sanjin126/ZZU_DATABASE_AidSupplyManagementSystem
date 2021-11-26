@@ -59,9 +59,16 @@ public class TranPersonDAOImpl extends BaseDAO<TranPerson> implements TranPerson
 				"WHERE NOT EXISTS(\r\n" + 
 				"SELECT *\r\n" + 
 				"FROM transportation t\r\n" + 
-				"WHERE tp.id=t.`tran_per_id`\r\n" + 
+				"WHERE tp.id=t.`tran_per_id` and t.status=0\r\n" + 
 				")";
 		return getResultSet(conn, sql);
 	}
-
+	
+	@Override
+	public TranPerson getByNumplate(Connection conn, String numplate) {
+		
+		String sql = "select * from tran_person where number_plate=?";
+		return query(conn, sql , numplate);
+		
+	}
 }

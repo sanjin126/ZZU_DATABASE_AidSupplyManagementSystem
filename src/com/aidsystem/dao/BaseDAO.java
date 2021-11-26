@@ -43,8 +43,9 @@ public abstract class BaseDAO<T> {
 	 * @param sql 
 	 * @param args 占位符所要填充的值
 	 * @return 返回更新操作所影响条数。0代表失败。
+	 * @throws SQLException 
 	 */
-	public int update(Connection conn, String sql, Object ...args) {
+	public int update(Connection conn, String sql, Object ...args){
 		QueryRunner runner = new QueryRunner();
 		int updateCount = 0;
 		try {
@@ -52,6 +53,7 @@ public abstract class BaseDAO<T> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return updateCount;
 	}
 	

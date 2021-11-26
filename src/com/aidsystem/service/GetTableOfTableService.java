@@ -34,7 +34,7 @@ public class GetTableOfTableService {
 	public static String[] checkedaidName = {"物资ID","捐赠物资","数量","捐赠者","联系电话","物资所在地","是否需要提供运输","审核志愿者ID"};  //填表名
 	public static String[] uncheckeddemName = {"物资ID","需求物资","数量","组织ID","组织名称","组织地址","负责人","联系电话","备注","审核状态"};  //填表名
 	public static String[] checkeddemName = {"物资ID","需求物资","数量","组织名称","组织地址","负责人","联系电话","备注","审核志愿者ID"};  //填表名
-	public static String[] tranInfo = {"运输物资ID","运输物资","运输人员","运输人员联系方式","车牌号","运输目的地","接受组织","组织负责人","组织联系方式","是否到达目的地"};
+	public static String[] tranInfo = {"运输物资ID","运输物资","捐赠人","捐赠人联系方式","运输人员","运输人员联系方式","车牌号","运输目的地","接受组织","组织负责人","组织联系方式","是否到达目的地"};
 	public static String[] transPerson = {"人员ID","姓名","性别","年龄","电话","负责区域","车牌号"};
 	public static String[] volunteer  = {"志愿者ID","姓名","性别","年龄","电话","住址"};
 	/**

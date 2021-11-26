@@ -54,9 +54,11 @@ public class TransInfoPanel {
 			lbldesc.setFont(new Font("Dialog", Font.BOLD, 15));
 			descPanel.add(lbldesc);
 		}
-		JPanel lblPanel = new JPanel(new GridLayout(5, 4));//b
+		JPanel lblPanel = new JPanel(new GridLayout(6, 4));//b
 		JTextField tfAidId = getUnEditableTF(5);
 		JTextField tfAid = getUnEditableTF(5);
+		JTextField tfAidPerson = getUnEditableTF(5);
+		JTextField tfAidPhone = getUnEditableTF(5);
 		JTextField tfPerson = getUnEditableTF(5);
 		JTextField tfPhone = getUnEditableTF(5);
 		JTextField tfNumber = getUnEditableTF(5);
@@ -66,7 +68,7 @@ public class TransInfoPanel {
 		JTextField tfOrgPhone = getUnEditableTF(5);
 		JTextField tfStatus = getUnEditableTF(5);{
 			String[] names = GetTableOfTableService.tranInfo;
-			ArrayList<Component> list = getLabelList(names,tfAidId,tfAid,tfPerson,tfPhone,tfNumber,tfDest,tfOrgName,tfDirector,tfOrgPhone,tfStatus);
+			ArrayList<Component> list = getLabelList(names,tfAidId,tfAid,tfAidPerson,tfAidPhone,tfPerson,tfPhone,tfNumber,tfDest,tfOrgName,tfDirector,tfOrgPhone,tfStatus);
 			fillInLblPanel(list, lblPanel);
 		}
 		btnCommit.addActionListener(new ActionListener() {
@@ -92,7 +94,7 @@ public class TransInfoPanel {
 		vbox.add(Box.createVerticalStrut(10));
 		vbox.add(btnPanel);
 		
-		transTable.addMouseListener(UIUtils.getTableClickListener(tfAidId,tfAid,tfPerson,tfPhone,tfNumber,tfDest,tfOrgName,tfDirector,tfOrgPhone,tfStatus));
+		transTable.addMouseListener(UIUtils.getTableClickListener(tfAidId,tfAid,tfAidPerson,tfAidPhone,tfPerson,tfPhone,tfNumber,tfDest,tfOrgName,tfDirector,tfOrgPhone,tfStatus));
 		jp.add(new JScrollPane(transTable));
 		jp.add(vbox, BorderLayout.SOUTH);
 		return jp;
