@@ -15,4 +15,10 @@ public class ViewCheckedAidDAOImpl extends BaseDAO<CheckedAidSupply> implements 
 		return getResultSet(conn, sql);
 	}
 
+	@Override
+	public ResultSet getResultSetOfALLOrderByName(Connection conn) {
+		String sql = "SELECT * FROM checked_aidsupply ORDER BY CONVERT(捐赠物资 USING gbk) COLLATE gbk_chinese_ci";
+		return getResultSet(conn, sql);
+	}
+
 }

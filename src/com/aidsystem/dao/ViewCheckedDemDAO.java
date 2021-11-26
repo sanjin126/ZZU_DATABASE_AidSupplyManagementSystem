@@ -5,5 +5,7 @@ import java.sql.ResultSet;
 
 public interface ViewCheckedDemDAO {
 	ResultSet getResultSetOfAll(Connection conn);
+	
+	ResultSet getResultSetOfAllOrderByName(Connection conn);	
 
 }

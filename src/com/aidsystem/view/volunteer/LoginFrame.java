@@ -3,13 +3,8 @@ package com.aidsystem.view.volunteer;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.JobAttributes;
-import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -19,16 +14,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import com.aidsystem.bean.User;
-import com.aidsystem.service.CheckService;
 import com.aidsystem.service.LoginService;
 import com.aidsystem.service.RegisterService;
 import com.aidsystem.util.StringUtils;
 import com.aidsystem.util.UIUtils;
-import com.mysql.fabric.xmlrpc.base.Array;
 
 public class LoginFrame extends JFrame{
 	private JPanel panel = new JPanel(null);
@@ -37,7 +31,7 @@ public class LoginFrame extends JFrame{
 	private JButton btnLogin = new JButton("登录");
 	private JButton btnRegister = new JButton("注册");
 	private JTextField tfUsrName = new JTextField(10);
-	private JTextField tfUsrPwd = new JTextField(10);
+	private JTextField tfUsrPwd = new JPasswordField(10);
 	
 	public static void main(String[] args) {
 		LoginFrame loginFrame = new LoginFrame();
@@ -83,7 +77,7 @@ public class LoginFrame extends JFrame{
 						VolunteerFrame volunteerFrame = new VolunteerFrame(user.getVolId());
 						volunteerFrame.init();
 					} else {
-						JOptionPane.showMessageDialog(panel, "没有找到您的账号，请注册");
+						JOptionPane.showMessageDialog(panel, "密码或账号输入错误了");
 		}}}});
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -172,6 +166,8 @@ class rgtFrame extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if (UIUtils.isTextEmpty(tfVolId,tfVolName,tfUsrName,tfUsrPwd)) {
 					JOptionPane.showMessageDialog(p3, "请将信息填写完整");
+				} else if (tfUsrName.getText().length() > 20 || tfUsrPwd.getText().length() > 20) {
+					JOptionPane.showMessageDialog(p3, "用户名和密码最多只能有20位哦");
 				} else {
 					int volId = new Integer(StringUtils.removeUnimportantChar(tfVolId.getText()));
 					String volName = StringUtils.removeUnimportantChar(tfVolName.getText());

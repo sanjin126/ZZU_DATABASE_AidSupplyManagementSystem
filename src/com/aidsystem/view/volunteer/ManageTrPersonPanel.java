@@ -94,6 +94,10 @@ public class ManageTrPersonPanel {
 						public void actionPerformed(ActionEvent e) {
 							if (UIUtils.isTextEmpty(tftrPName,tftrPPhone,tftrPNumPlate)) {
 								JOptionPane.showMessageDialog(addFrame, "请至少输入姓名,手机号和车牌号");
+							} else if(tftrPPhone.getText().length() != 11){
+								JOptionPane.showMessageDialog(addFrame, "请输入正确的车牌号哦");
+							} else if (tftrPNumPlate.getText().length() != 7) {
+								JOptionPane.showMessageDialog(addFrame, "请输入正确的手机号哦");
 							} else {
 								try {
 									ManageService.addTrp(

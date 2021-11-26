@@ -3,6 +3,7 @@ package com.aidsystem.service;
 import java.awt.Font;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.ColorModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.TableColumnModel;
 
 import com.aidsystem.bean.DBObject;
 import com.aidsystem.dao.Impl.AidSupplyDAOImpl;
@@ -120,7 +122,7 @@ public class GetTableOfTableService {
 //			AidSupplyDAOImpl aidDao = new AidSupplyDAOImpl();
 //			ResultSet rs = aidDao.getResultSetOfCheckedAid(conn);
 			ViewCheckedAidDAOImpl aidDao = new ViewCheckedAidDAOImpl();
-			ResultSet rs = aidDao.getResultSetOfAll(conn);
+			ResultSet rs = aidDao.getResultSetOfALLOrderByName(conn);
 			ResultSetTableModel dm = new ResultSetTableModel(rs, checkedaidName);
 			JTable table = new JTable(dm);
 			table.getTableHeader().setFont(new Font("宋体", Font.BOLD, 15));
@@ -154,7 +156,7 @@ public class GetTableOfTableService {
 //			DemandSupplyDAOImpl demDao = new DemandSupplyDAOImpl();
 //			ResultSet rs = demDao.getResultSetOfCheckedDem(conn);
 			ViewCheckedDemDAOImpl demDao = new ViewCheckedDemDAOImpl();
-			ResultSet rs = demDao.getResultSetOfAll(conn);
+			ResultSet rs = demDao.getResultSetOfAllOrderByName(conn);
 			ResultSetTableModel dm = new ResultSetTableModel(rs, checkeddemName);
 			JTable table = new JTable(dm);
 			table.getTableHeader().setFont(new Font("宋体", Font.BOLD, 15));

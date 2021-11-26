@@ -25,6 +25,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 import com.aidsystem.service.CommitInfoService;
+import com.aidsystem.util.StringUtils;
 import com.aidsystem.util.UIUtils;
 
 
@@ -196,7 +197,10 @@ public class MainFrame {
 								"您的信息填写不完整，标 * 一栏必须填写",
 								"完善信息后就可以捐赠了",
 								JOptionPane.WARNING_MESSAGE);
-					}else {	
+					} else if (tfPhone.getText().length() != 11) {
+						JOptionPane.showMessageDialog(aidFrame,"请输入正确的手机号");
+					}
+					else {	
 						boolean commitSuccess = CommitInfoService.commitAidInfo(tfDonName.getText(), tfPhone.getText(), tfAidName.getText(),
 								tfQuantity.getText(), taAddress.getText(), comboNeedCar.getSelectedIndex());
 						if (commitSuccess) {
@@ -281,12 +285,15 @@ public class MainFrame {
 			dembtnCommit.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					if (UIUtils.isTextEmpty(tfDirector,tfPhone,taAddress,tfDemName)) {
-						JOptionPane.showMessageDialog(aidFrame,
+						JOptionPane.showMessageDialog(demFrame,
 								"请不要着急，您的信息填写不完整，请把标 * 一栏信息填上，这样我们才可以帮到您",
 								"阳光总在风雨后",
 								JOptionPane.WARNING_MESSAGE,
 								UIUtils.setImageSize(new ImageIcon("image/爱心.png"), 15, 15));
-					} else {
+					} else if (tfPhone.getText().length() != 11) {
+						JOptionPane.showMessageDialog(demFrame, "请输入正确的手机号");
+					}
+					else {
 						boolean commitSuccess = CommitInfoService.commitDemInfo(tfOrgName.getText(), tfDirector.getText(), tfPhone.getText(), taAddress.getText(), tfDemName.getText(), tfQuantity.getText(), taDemDesc.getText());
 						if (commitSuccess) {
 							JOptionPane.showMessageDialog(demFrame,

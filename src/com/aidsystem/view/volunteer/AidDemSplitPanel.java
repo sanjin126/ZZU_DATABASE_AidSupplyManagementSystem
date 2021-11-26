@@ -138,7 +138,7 @@ public class AidDemSplitPanel {
 		perBotmPanel = new JPanel();
 		JLabel lblPerId = new JLabel("人员ID:");
 		tfPerId = new JTextField(5);
-		perFrame.setSize(550, 300);
+		perFrame.setSize(700, 300);
 		perFrame.setLocationRelativeTo(jf);
 		perFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		perTable = GetTableOfTableService.getFreeTransPersonInfo(perFrame);

@@ -84,7 +84,7 @@ public class ManageService {
 					newAge, 
 					StringUtils.removeUnimportantChar(phone), 
 					StringUtils.removeUnimportantChar(area), 
-					StringUtils.removeUnimportantChar(numberPlate)
+					StringUtils.removeUnimportantChar(numberPlate).toUpperCase()
 					);
 			TranPersonDAOImpl trpDao = new TranPersonDAOImpl();
 			trpDao.insert(conn, trp);
@@ -126,7 +126,7 @@ public class ManageService {
 					newAge, 
 					StringUtils.removeUnimportantChar(phone), 
 					StringUtils.removeUnimportantChar(area), 
-					StringUtils.removeUnimportantChar(numberPlate)
+					StringUtils.removeUnimportantChar(numberPlate).toUpperCase()
 					);
 			trpDao.updateTrp(conn, trp);
 		} catch (NumberFormatException e) {

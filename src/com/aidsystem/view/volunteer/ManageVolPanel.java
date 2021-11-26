@@ -97,6 +97,8 @@ public class ManageVolPanel {
 						public void actionPerformed(ActionEvent e) {
 							if (UIUtils.isTextEmpty(tfVolName,tfVolPhone)) {
 								JOptionPane.showMessageDialog(addFrame, "请至少输入姓名和手机号");
+							} else if(tfVolPhone.getText().length() != 11){
+								JOptionPane.showMessageDialog(addFrame, "请输入正确的车牌号哦");
 							} else {
 								try {
 									ManageService.addVol(tfVolName.getText(), 

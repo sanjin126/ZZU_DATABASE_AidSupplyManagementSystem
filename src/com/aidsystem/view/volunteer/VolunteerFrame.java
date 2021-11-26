@@ -1,6 +1,7 @@
 package com.aidsystem.view.volunteer;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.TextArea;
@@ -83,6 +84,12 @@ public class VolunteerFrame {
 				new ManageTrPersonPanel().init(jf);
 			}
 		});
+		freshFrame.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int selectedIndex = tabPane.getSelectedIndex();
+				refresh(selectedIndex);
+			}
+		});
 		intro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -130,12 +137,14 @@ public class VolunteerFrame {
 		manageDistribute.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		manageVol.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		managePer.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+		freshFrame.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		help.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		intro.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		relativeWed.setFont(new Font("微软雅黑", Font.PLAIN, 14));
 		manage.add(manageDistribute);
 		manage.add(manageVol);
 		manage.add(managePer);
+		manage.add(freshFrame);
 		help.add(intro);
 		help.add(relativeWed);
 		mb.add(manage);

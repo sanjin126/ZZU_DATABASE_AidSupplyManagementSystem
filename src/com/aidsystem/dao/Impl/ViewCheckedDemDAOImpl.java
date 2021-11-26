@@ -15,4 +15,10 @@ public class ViewCheckedDemDAOImpl extends BaseDAO<CheckedDemSupply> implements 
 		return getResultSet(conn, sql);
 	}
 
+	@Override
+	public ResultSet getResultSetOfAllOrderByName(Connection conn) {
+		String sql = "SELECT * FROM checked_demsupply ORDER BY CONVERT(需求物资 USING gbk) COLLATE gbk_chinese_ci";
+		return getResultSet(conn, sql);
+	}
+
 }

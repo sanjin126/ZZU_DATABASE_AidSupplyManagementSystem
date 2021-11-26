@@ -27,6 +27,8 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.plaf.metal.MetalBorders.Flush3DBorder;
 import javax.swing.table.TableModel;
 
@@ -186,23 +188,7 @@ public class CheckPanel {
 	
 	
 	public JPanel getCheckPanel(JFrame jf) {
-		
-		//test 
 
-		//test
-		//test
-//		JButton btn = new JButton("刷新");
-//		{
-//			btn.addActionListener(new ActionListener() {
-//				public void actionPerformed(ActionEvent e) {
-//					reFresh();
-//				}
-//			});
-//		}
-//		
-//		//test
-		
-		
 		//1.aidInfoPanel，里边是尚未审核的救援物资信息
 		
 		aidInfoPanel = getAidInfoPanel(jf);
@@ -218,6 +204,14 @@ public class CheckPanel {
 //		jp.add(btn,BorderLayout.SOUTH);
 		//设置背景
 		jp.setBackground(Color.lightGray);
+//		tab.addChangeListener(new ChangeListener() { //刷新功能
+//			
+//			@Override
+//			public void stateChanged(ChangeEvent e) {
+//				reFresh();
+//				
+//			}
+//		});
 		return jp;		
 	}
 	
