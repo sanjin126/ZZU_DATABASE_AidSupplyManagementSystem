@@ -2,8 +2,8 @@ package com.aidsystem.service;
 
 import java.sql.Connection;
 
-import com.aidsystem.bean.ItemToType;
-import com.aidsystem.dao.Impl.ItemToTypeDAOImpl;
+import com.aidsystem.bean.ItemToUnit;
+import com.aidsystem.dao.Impl.ItemToUnitDAOImpl;
 import com.aidsystem.util.JDBCUtils;
 import com.aidsystem.util.StringUtils;
 
@@ -13,12 +13,12 @@ public class ItemToTypeService {
 		Connection conn = null;
 		try {
 			conn = JDBCUtils.getConnection();
-			ItemToTypeDAOImpl dao = new ItemToTypeDAOImpl();
-			ItemToType itt = dao.getByName(conn, name);
+			ItemToUnitDAOImpl dao = new ItemToUnitDAOImpl();
+			ItemToUnit itt = dao.getByName(conn, name);
 			if (itt == null) {
 				String unit = StringUtils.getOnlyStringFromString(quantity);
 				if (unit != null) {
-					ItemToType itemToType = new ItemToType(name, unit);
+					ItemToUnit itemToType = new ItemToUnit(name, unit);
 					dao.insert(conn, itemToType);	
 				}
 			}

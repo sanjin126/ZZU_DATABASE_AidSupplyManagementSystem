@@ -73,6 +73,7 @@ public interface DemandSupplyDAO {
 	 * @param conn
 	 * @return
 	 */
+	@Deprecated
 	ResultSet getResultSetOfUncheckedDem(Connection conn) ;
 	/**
 	 * 
@@ -81,8 +82,9 @@ public interface DemandSupplyDAO {
 	 * @param conn
 	 * @return
 	 */
+	@Deprecated
 	ResultSet getResultSetOfCheckedDem(Connection conn) ;
-	
+	@Deprecated
 	void transById(Connection conn, int id);
 
 }

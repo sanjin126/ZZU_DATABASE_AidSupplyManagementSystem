@@ -14,8 +14,8 @@ public class DemandSupplyDAOImpl extends BaseDAO<DemandSupply> implements Demand
 
 	@Override
 	public void insertDemand(Connection conn, DemandSupply demand) {
-		String sql = "insert into demand_supply values(?,?,?,?,?,?,?,?)";
-		update(conn, sql, null,demand.getName(),demand.getQuantity(),new Timestamp(new java.util.Date().getTime()),demand.getOrgId(),demand.getVolId(),demand.isCheckStatus(),demand.isStatus());
+		String sql = "insert into demand_supply values(?,?,?,?,?,?,?,?,?)";
+		update(conn, sql, null,demand.getName(),demand.getQuantity(),new Timestamp(new java.util.Date().getTime()),demand.getDescription(),demand.getOrgId(),demand.getVolId(),demand.isCheckStatus(),demand.isStatus());
 	}
 
 	@Override
@@ -26,21 +26,21 @@ public class DemandSupplyDAOImpl extends BaseDAO<DemandSupply> implements Demand
 
 	@Override
 	public void updateDemand(Connection conn, DemandSupply demand) {
-		String sql = "update demand_supply set name=?,quantity=?,demand_date=?,org_id=?,vol_id=?,check_status=?,status=? "
+		String sql = "update demand_supply set name=?,quantity=?,demand_date=?,description=?,org_id=?,vol_id=?,check_status=?,status=? "
 				+ "where id=?";
-		update(conn, sql , demand.getName(),demand.getQuantity(),demand.getDemandDate(),demand.getOrgId(),demand.getVolId(),demand.isCheckStatus(),demand.isStatus(),demand.getId());
+		update(conn, sql , demand.getName(),demand.getQuantity(),demand.getDemandDate(),demand.getDescription(),demand.getOrgId(),demand.getVolId(),demand.isCheckStatus(),demand.isStatus(),demand.getId());
 	}
 
 	@Override
 	public DemandSupply getDemandById(Connection conn, int id) {
-		String sql = "select id,name,quantity,demand_date demandDate,org_id orgId,vol_id volId,check_status checkStatus,status from demand_supply where id=?";
+		String sql = "select id,name,quantity,demand_date demandDate,description,org_id orgId,vol_id volId,check_status checkStatus,status from demand_supply where id=?";
 		return query(conn, sql, id);
 		
 	}
 
 	@Override
 	public List<DemandSupply> getAll(Connection conn) {
-		String sql = "select id,name,quantity,demand_date demandDate,org_id orgId,vol_id volId,check_status checkStatus,status from demand_supply";
+		String sql = "select id,name,quantity,demand_date demandDate,description,org_id orgId,vol_id volId,check_status checkStatus,status from demand_supply";
 		return queryList(conn, sql);
 	}
 
@@ -51,14 +51,14 @@ public class DemandSupplyDAOImpl extends BaseDAO<DemandSupply> implements Demand
 	
 	}
 	/**
-	 * @desc 可更新的字段值：name=?,quantity=?,org_id=?,vol_id=?,check_status=?
+	 * @desc 可更新的字段值：name=?,quantity=?,description,org_id=?,vol_id=?,check_status=?
 	 * @author sanjin
 	 */
 	@Override
 	public void checkthroughById(Connection conn, int id, DemandSupply dem) {
-		String sql = "update demand_supply set name=?,quantity=?,vol_id=?,check_status=? "
+		String sql = "update demand_supply set name=?,quantity=?,description=?,vol_id=?,check_status=? "
 				+ "where id=?";
-		update(conn, sql , dem.getName(),dem.getQuantity(),dem.getVolId(),true,dem.getId());
+		update(conn, sql , dem.getName(),dem.getQuantity(),dem.getDescription(),dem.getVolId(),true,dem.getId());
 		
 	}
 	

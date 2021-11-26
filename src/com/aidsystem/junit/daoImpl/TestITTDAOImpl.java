@@ -6,16 +6,16 @@ import java.sql.Connection;
 
 import org.junit.Test;
 
-import com.aidsystem.bean.ItemToType;
-import com.aidsystem.dao.Impl.ItemToTypeDAOImpl;
+import com.aidsystem.bean.ItemToUnit;
+import com.aidsystem.dao.Impl.ItemToUnitDAOImpl;
 import com.aidsystem.util.JDBCUtils;
 
 public class TestITTDAOImpl {
-	private ItemToTypeDAOImpl dao = new ItemToTypeDAOImpl();
+	private ItemToUnitDAOImpl dao = new ItemToUnitDAOImpl();
 	@Test
 	public void testInsert() throws Exception {
 		Connection conn = JDBCUtils.getConnection();
-		ItemToType itt = new ItemToType("test2", "test");
+		ItemToUnit itt = new ItemToUnit("test2", "test");
 		dao.insert(conn, itt );
 	}
 
@@ -28,7 +28,7 @@ public class TestITTDAOImpl {
 	@Test
 	public void testUpdateItt() throws Exception {
 		Connection conn = JDBCUtils.getConnection();
-		ItemToType itt = new ItemToType("test2", "test3");
+		ItemToUnit itt = new ItemToUnit("test2", "test3");
 		dao.updateItt(conn, itt);
 	}
 

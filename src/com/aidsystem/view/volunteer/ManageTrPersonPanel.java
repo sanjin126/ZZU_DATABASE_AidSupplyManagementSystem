@@ -95,15 +95,21 @@ public class ManageTrPersonPanel {
 							if (UIUtils.isTextEmpty(tftrPName,tftrPPhone,tftrPNumPlate)) {
 								JOptionPane.showMessageDialog(addFrame, "请至少输入姓名,手机号和车牌号");
 							} else {
-								ManageService.addTrp(
-										tftrPName.getText(),
-										tftrPGender.getText(), 
-										tftrPAge.getText(), 
-										tftrPPhone.getText(), 
-										tftrPArea.getText(), 
-										tftrPNumPlate.getText());
+								try {
+									ManageService.addTrp(
+											tftrPName.getText(),
+											tftrPGender.getText(), 
+											tftrPAge.getText(), 
+											tftrPPhone.getText(), 
+											tftrPArea.getText(), 
+											tftrPNumPlate.getText());
+								} catch (Exception e1) {
+									JOptionPane.showMessageDialog(addFrame, e1.getMessage());
+									return;
+								}
 								JOptionPane.showMessageDialog(addFrame, "添加成功");
 								new ManageTrPersonPanel().init(jf);
+								trPersonFrame.dispose();
 						}
 					}
 						});
@@ -125,7 +131,8 @@ public class ManageTrPersonPanel {
 						int result = JOptionPane.showConfirmDialog(trPersonFrame, "是否确认删除", "删除志愿者", JOptionPane.YES_NO_OPTION);
 						if (result == JOptionPane.YES_OPTION) {
 							ManageService.deleteVol(tftrPId.getText());
-							new ManageVolPanel().init(jf);
+							new ManageTrPersonPanel().init(jf);
+							trPersonFrame.dispose();
 						}			
 					}
 				}
@@ -135,16 +142,21 @@ public class ManageTrPersonPanel {
 					if (UIUtils.isTextEmpty(tftrPId,tftrPName,tftrPNumPlate)) {
 						JOptionPane.showMessageDialog(trPersonFrame, "信息不全！");
 					} else {
-						ManageService.updateTrp(
-								tftrPId.getText(),
-								tftrPName.getText(),
-								tftrPGender.getText(), 
-								tftrPAge.getText(), 
-								tftrPPhone.getText(), 
-								tftrPArea.getText(), 
-								tftrPNumPlate.getText());
+						try {
+							ManageService.updateTrp(
+									tftrPId.getText(),
+									tftrPName.getText(),
+									tftrPGender.getText(), 
+									tftrPAge.getText(), 
+									tftrPPhone.getText(), 
+									tftrPArea.getText(), 
+									tftrPNumPlate.getText());
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(addFrame, e1.getMessage());
+						}
 						JOptionPane.showMessageDialog(trPersonFrame, "更新成功！");
-						new ManageVolPanel().init(jf);
+						new ManageTrPersonPanel().init(jf);
+						trPersonFrame.dispose();
 					}
 				}
 			});

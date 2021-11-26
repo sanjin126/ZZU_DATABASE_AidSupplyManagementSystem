@@ -98,12 +98,19 @@ public class ManageVolPanel {
 							if (UIUtils.isTextEmpty(tfVolName,tfVolPhone)) {
 								JOptionPane.showMessageDialog(addFrame, "请至少输入姓名和手机号");
 							} else {
-								ManageService.addVol(tfVolName.getText(), 
-										tfVolGender.getText(), 
-										tfVolAge.getText(),
-										tfVolPhone.getText(),
-										tfVolAddress.getText());
+								try {
+									ManageService.addVol(tfVolName.getText(), 
+											tfVolGender.getText(), 
+											tfVolAge.getText(),
+											tfVolPhone.getText(),
+											tfVolAddress.getText());
+								} catch (Exception e1) {
+									JOptionPane.showMessageDialog(addFrame, e1.getMessage());
+									return;
+								}
 								JOptionPane.showMessageDialog(addFrame, "添加成功");
+								volFrame.dispose();
+								addFrame.dispose();
 								new ManageVolPanel().init(jf);
 							}
 						}
@@ -125,6 +132,7 @@ public class ManageVolPanel {
 						int result = JOptionPane.showConfirmDialog(volFrame, "是否确认删除", "删除志愿者", JOptionPane.YES_NO_OPTION);
 						if (result == JOptionPane.YES_OPTION) {
 							ManageService.deleteVol(tfVolId.getText());
+							volFrame.dispose();
 							new ManageVolPanel().init(jf);
 						}			
 					}
@@ -135,8 +143,16 @@ public class ManageVolPanel {
 					if (UIUtils.isTextEmpty(tfVolName,tfVolPhone)) {
 						JOptionPane.showMessageDialog(volFrame, "信息不全！");
 					} else {
-						ManageService.updateVol(tfVolId.getText(), tfVolName.getText(), tfVolGender.getText(), tfVolAge.getText(), tfVolPhone.getText(), tfVolAddress.getText());
+						try {
+							ManageService.updateVol(tfVolId.getText(), tfVolName.getText(), tfVolGender.getText(), tfVolAge.getText(), tfVolPhone.getText(), tfVolAddress.getText());
+						} catch (Exception e1) {
+							JOptionPane.showMessageDialog(addFrame, e1.getMessage());
+							volFrame.dispose();
+							new ManageVolPanel().init(jf);
+							return;
+						}
 						JOptionPane.showMessageDialog(volFrame, "更新成功！");
+						volFrame.dispose();
 						new ManageVolPanel().init(jf);
 					}
 				}

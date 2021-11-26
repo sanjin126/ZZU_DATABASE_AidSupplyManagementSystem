@@ -7,6 +7,9 @@ import java.awt.JobAttributes;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Vector;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -25,6 +28,7 @@ import com.aidsystem.service.LoginService;
 import com.aidsystem.service.RegisterService;
 import com.aidsystem.util.StringUtils;
 import com.aidsystem.util.UIUtils;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 public class LoginFrame extends JFrame{
 	private JPanel panel = new JPanel(null);
@@ -38,6 +42,8 @@ public class LoginFrame extends JFrame{
 	public static void main(String[] args) {
 		LoginFrame loginFrame = new LoginFrame();
 		loginFrame.setVisible(true);
+
+
 	}
 	
 	public LoginFrame() {
@@ -174,7 +180,7 @@ class rgtFrame extends JFrame{
 					try {
 						RegisterService.registerUser(volId, volName, usrName, usrPwd);
 					} catch (Exception e1) {
-						System.out.println("exception");
+//						System.out.println("exception");
 						String message = e1.getMessage();
 						JOptionPane.showMessageDialog(p3, message);
 						if ("注册成功".equals(message)) {

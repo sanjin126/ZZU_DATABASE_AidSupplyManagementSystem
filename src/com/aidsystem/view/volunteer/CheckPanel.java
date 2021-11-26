@@ -32,7 +32,7 @@ import javax.swing.table.TableModel;
 
 import com.aidsystem.bean.AidSupply;
 import com.aidsystem.bean.DemandSupply;
-import com.aidsystem.bean.ItemToType;
+import com.aidsystem.bean.ItemToUnit;
 import com.aidsystem.bean.Organization;
 import com.aidsystem.service.CheckService;
 import com.aidsystem.service.GetTableOfTableService;
@@ -69,6 +69,8 @@ public class CheckPanel {
 				} else {
 					if (UIUtils.isTextEmpty(tfAidID,tfAidName,tfAidQuantity,tfDonID,tfDon,tfAidPhone,tfAidAddress,tfNeedCar,tfAidCheckStatus)) {
 						JOptionPane.showMessageDialog(aidInfoPanel, "请完善物资信息", "提示", JOptionPane.PLAIN_MESSAGE);
+					} else if( !("是".equals( StringUtils.removeUnimportantChar(tfNeedCar.getText()) ) || "否".equals( StringUtils.removeUnimportantChar(tfNeedCar.getText())) )) {
+						JOptionPane.showMessageDialog(demInfoPanel, "是否需要提供运输一栏请填'是'或'否'");
 					} else {
 						int result = JOptionPane.showConfirmDialog(demInfoPanel, "您将对第"+tfAidID.getText()+"号物资进行审核通过","提示",JOptionPane.YES_NO_OPTION);
 						if (result == JOptionPane.YES_OPTION) 
@@ -104,7 +106,7 @@ public class CheckPanel {
 						JOptionPane.showMessageDialog(aidInfoPanel, "删除成功", "提示", JOptionPane.PLAIN_MESSAGE);
 						reFresh();	
 					} else {
-						System.out.println("取消");
+//						System.out.println("取消");
 					}
 				}
 			}
@@ -146,8 +148,8 @@ public class CheckPanel {
 							String orgAddress = tfOrgAddress.getText();
 							String director = tfDirector.getText();
 							String desc = tfDesc.getText();
-							DemandSupply dem = new DemandSupply(demId, demName, quantity, null, orgId, VolunteerFrame.volId, true, false);
-							Organization org = new Organization(orgId, orgName, orgAddress, director, null, desc);
+							DemandSupply dem = new DemandSupply(demId, demName, quantity, null, desc, orgId, VolunteerFrame.volId, true, false);
+							Organization org = new Organization(orgId, orgName, orgAddress, director, null);
 							CheckService.checkDemSupplyService(demId, orgId, true, dem, org);
 							ItemToTypeService.saveType(demName,StringUtils.getOnlyStringFromString(tfDemQuantity.getText()));
 							JOptionPane.showMessageDialog(demInfoPanel, "审核成功", "提示", JOptionPane.PLAIN_MESSAGE);
@@ -171,7 +173,7 @@ public class CheckPanel {
 						JOptionPane.showMessageDialog(demInfoPanel, "删除成功", "提示", JOptionPane.PLAIN_MESSAGE);
 						reFresh();
 					} else {
-						System.out.println("取消");
+//						System.out.println("取消");
 					}
 				}
 			}

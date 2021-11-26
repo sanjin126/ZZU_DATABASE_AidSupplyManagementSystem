@@ -15,7 +15,7 @@ public class TestRegisterService {
 		String usrName = "mengmeng";
 		String usrPwd = "123";
 		try {
-			System.out.println(RegisterService.registerUser(volId, volName, usrName, usrPwd));
+//			System.out.println(RegisterService.registerUser(volId, volName, usrName, usrPwd));
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

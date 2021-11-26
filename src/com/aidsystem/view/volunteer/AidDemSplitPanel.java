@@ -93,7 +93,7 @@ public class AidDemSplitPanel {
 							reFresh(volFrame);
 						}
 					} else {
-						System.out.println("取消");
+//						System.out.println("取消");
 					}
 
 				}

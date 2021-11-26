@@ -77,13 +77,14 @@ public class AidSupplyDAOImpl extends BaseDAO<AidSupply> implements AidSupplyDAO
 		String sql = "update aid_supply set status=? where id=?";
 		update(conn, sql, true, id);
 	}
-	
+	@Deprecated
 	@Override
 	public ResultSet getResultSetOfUncheckedAid(Connection conn) {
 		String sql = "select * from aid_supply where check_status = 0";
 		return getResultSet(conn, sql);
 		
 	}
+	@Deprecated
 	@Override
 	public ResultSet getResultSetOfCheckedAid(Connection conn) {
 		String sql = "select * from aid_supply where check_status = 1";

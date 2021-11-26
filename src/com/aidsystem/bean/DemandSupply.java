@@ -7,6 +7,7 @@ public class DemandSupply {
 	private String name;
 	private Integer quantity;
 	private Timestamp demandDate;
+	private String description;
 	private int orgId;
 	private Integer volId;
 	private boolean checkStatus;
@@ -15,17 +16,15 @@ public class DemandSupply {
 	public DemandSupply() {
 		super();
 	}
-	/**
-	 * 
-	 * @Description 可以为空的属性：quantity，demand_date，volId,
-	 */
-	public DemandSupply(int id, String name, Integer quantity, Timestamp demandDate, int orgId, Integer volId,
-			boolean checkStatus, boolean status) {
+
+	public DemandSupply(int id, String name, Integer quantity, Timestamp demandDate, String description, int orgId,
+			Integer volId, boolean checkStatus, boolean status) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.quantity = quantity;
 		this.demandDate = demandDate;
+		this.description = description;
 		this.orgId = orgId;
 		this.volId = volId;
 		this.checkStatus = checkStatus;
@@ -64,6 +63,14 @@ public class DemandSupply {
 		this.demandDate = demandDate;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public int getOrgId() {
 		return orgId;
 	}
@@ -99,8 +106,11 @@ public class DemandSupply {
 	@Override
 	public String toString() {
 		return "DemandSupply [id=" + id + ", name=" + name + ", quantity=" + quantity + ", demandDate=" + demandDate
-				+ ", orgId=" + orgId + ", volId=" + volId + ", checkStatus=" + checkStatus + ", status=" + status + "]";
+				+ ", description=" + description + ", orgId=" + orgId + ", volId=" + volId + ", checkStatus="
+				+ checkStatus + ", status=" + status + "]";
 	}
+	
+	
 
 	
 	

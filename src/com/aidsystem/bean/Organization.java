@@ -6,23 +6,26 @@ public class Organization {
 	private String address;
 	private String director;
 	private String phone;
-	private String description;
 	
 	public Organization() {
 		super();
 	}
-	/**
-	 * 
-	 * @Description 可以为空的属性：name，description
-	 */
-	public Organization(int id, String name, String address, String director, String phone, String description) {
+
+	public Organization(int id, String name, String address, String director, String phone) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.director = director;
 		this.phone = phone;
-		this.description = description;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -57,27 +60,13 @@ public class Organization {
 		this.phone = phone;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	@Override
 	public String toString() {
 		return "Organization [id=" + id + ", name=" + name + ", address=" + address + ", director=" + director
-				+ ", phone=" + phone + ", description=" + description + "]";
+				+ ", phone=" + phone + "]";
 	}
+	
+	
 	
 
 }

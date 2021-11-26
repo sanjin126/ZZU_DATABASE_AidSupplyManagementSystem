@@ -53,8 +53,8 @@ public class CommitInfoService {
 				Integer donId = isNull;
 				AidSupply aid = new AidSupply(0, StringUtils.removeUnimportantChar(aidName), StringUtils.getNumberFromString(quantity), StringUtils.removeUnimportantChar(address), null, needCar==1?true:false, donId, null, false, false);
 				aidDao.insertAid(conn, aid);
-				System.out.println(donId);
-				System.out.println("已存在");
+//				System.out.println(donId);
+//				System.out.println("已存在");
 			}
 //			System.out.println(don);
 //			System.out.println(aid);
@@ -102,20 +102,20 @@ public class CommitInfoService {
 			OrganizationDAOImpl orgDao = new OrganizationDAOImpl();
 			DemandSupplyDAOImpl demDao = new DemandSupplyDAOImpl();
 			
-			Organization org = new Organization(0, StringUtils.removeUnimportantChar(orgName), StringUtils.removeUnimportantChar(address), StringUtils.removeUnimportantChar(director), StringUtils.removeUnimportantChar(phone), StringUtils.removeUnimportantChar(desc));
+			Organization org = new Organization(0, StringUtils.removeUnimportantChar(orgName), StringUtils.removeUnimportantChar(address), StringUtils.removeUnimportantChar(director), StringUtils.removeUnimportantChar(phone));
 			//查找是否存在一个这样的组织
 			Integer isNull = orgDao.getIdByDirectorAndPhone(conn, StringUtils.removeUnimportantChar(director), StringUtils.removeUnimportantChar(phone));
 			if (isNull == null) {
 				orgDao.insert(conn, org);
 				int orgId = new Integer(orgDao.getLastInsertId(conn).toString());
-				DemandSupply demand = new DemandSupply(0, demName, StringUtils.getNumberFromString(quantity), null, orgId , null, false, false);
+				DemandSupply demand = new DemandSupply(0, demName, StringUtils.getNumberFromString(quantity), null, StringUtils.removeUnimportantChar(desc), orgId , null, false, false);
 				demDao.insertDemand(conn, demand);
 			} else {
 				int orgId = isNull;
-				DemandSupply demand = new DemandSupply(0, demName, StringUtils.getNumberFromString(quantity), null, orgId , null, false, false);
+				DemandSupply demand = new DemandSupply(0, demName, StringUtils.getNumberFromString(quantity), null, StringUtils.removeUnimportantChar(desc), orgId , null, false, false);
 				demDao.insertDemand(conn, demand);
-				System.out.println(orgId);
-				System.out.println("已存在");
+//				System.out.println(orgId);
+//				System.out.println("已存在");
 			}
 			conn.commit();
 			return true;

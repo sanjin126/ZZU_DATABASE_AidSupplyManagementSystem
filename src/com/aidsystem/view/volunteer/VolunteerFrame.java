@@ -58,10 +58,6 @@ public class VolunteerFrame {
 		jf.setSize(WIDTH, HEIGHT);
 		jf.setLocationRelativeTo(null);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//图片
-		ImageIcon image = new ImageIcon("image/test.jpg");
-		UIUtils.setImageSize(image, 15, 15);
 		//各个标签页的加载
 		tabPane.setFont(new Font("微软雅黑", Font.BOLD, 15)); //修改标签全局字体大小
 		tabPane.addTab("待审核信息", UIUtils.setImageSize(new ImageIcon("image/check.png"), 20, 20), checkPanel, "需要志愿者进行审核");
@@ -126,7 +122,7 @@ public class VolunteerFrame {
 				}
 			}
 		});
-		if (volId!=1001) {
+		if (volId!=1001) { //志愿者的总负责人 1001号志愿者
 			manageVol.setEnabled(false);
 			managePer.setEnabled(false);		
 		}
@@ -172,35 +168,39 @@ public class VolunteerFrame {
 					tabPane.setComponentAt(3, transPanel);
 					break;
 				default:
-					System.out.println(tabPane.getSelectedIndex());
 					break;
 				}
 			}
 		});
 		
 	}
-	
+	/**
+	 * 
+	 * @Description 实现各子面板的刷新功能
+	 * @author sanjin
+	 * @param index 面板次序
+	 */
 	public static void refresh(int index) {
 		switch (index) {
 		case 0:
 			checkPanel = new CheckPanel().getCheckPanel(jf);
 			tabPane.setComponentAt(0, checkPanel);
-			System.out.println(tabPane.getSelectedIndex());
+//			System.out.println(tabPane.getSelectedIndex());
 			break;
 		case 1:
 			aidPanel = new AidSupplyPanel().getAidSupplyPanel(jf);
 			tabPane.setComponentAt(1, aidPanel);
-			System.out.println(tabPane.getSelectedIndex());
+//			System.out.println(tabPane.getSelectedIndex());
 			break;
 		case 2:
 			demPanel = new DemSupplyPanel().getDemPanel(jf);
 			tabPane.setComponentAt(2, demPanel);
-			System.out.println(tabPane.getSelectedIndex());
+//			System.out.println(tabPane.getSelectedIndex());
 			break;
 		case 3:
 			transPanel = new TransInfoPanel().getTransInfoPanel(jf);
 			tabPane.setComponentAt(3, transPanel);
-			System.out.println(tabPane.getSelectedIndex());
+//			System.out.println(tabPane.getSelectedIndex());
 			break;
 		default:
 			System.out.println(tabPane.getSelectedIndex());

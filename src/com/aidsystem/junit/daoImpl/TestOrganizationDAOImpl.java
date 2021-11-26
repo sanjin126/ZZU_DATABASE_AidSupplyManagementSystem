@@ -15,21 +15,21 @@ public class TestOrganizationDAOImpl {
 	@Test
 	public void testInsert() throws Exception {
 		Connection conn = JDBCUtils.getConnection();
-		Organization org = new Organization(0, null, "测试", "测试", "测试", null);
+		Organization org = new Organization(0, null, "测试", "测试", "111");
 		dao.insert(conn, org );
 	}
 
 	@Test
 	public void testDeleteById() throws Exception {
 		Connection conn = JDBCUtils.getConnection();
-		dao.deleteById(conn, 1011);
+		dao.deleteById(conn, 1012);
 	}
 
 	@Test
 	public void testUpdateOrg() throws Exception {
 		Connection conn = JDBCUtils.getConnection();
-		Organization org = new Organization(1012, "test", "测试1", "测试1", "测试1", "test");
-		dao.updateOrg(conn, org);
+//		Organization org = new Organization(1012, "test", "测试1", "测试1", "测试1", "test");
+//		dao.updateOrg(conn, org);
 	}
 
 	@Test
@@ -52,7 +52,7 @@ public class TestOrganizationDAOImpl {
 	@Test //ac
 	public void testCheckThroughById() throws Exception {
 		Connection conn = JDBCUtils.getConnection();
-		Organization org = new Organization(1001, "test3", "郑州大学", "sanjin", "11111111111", "紧急救援");
+		Organization org = new Organization(1, "test3", "郑州大学", "sanjin", "11111111111");
 		dao.checkThroughById(conn, 1012, org );
 	}
 	

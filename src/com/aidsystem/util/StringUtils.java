@@ -27,5 +27,12 @@ public class StringUtils {
 		s = s.replaceAll("[\\s]|[\n]|[\r]", "");
 		return s;
 	}
+	
+//	public static boolean isNumber(String s) {
+//		if (s == null || "".equals(s)) {
+//			return true;
+//		}
+//		s.isEmpty();
+//	}
 
 }

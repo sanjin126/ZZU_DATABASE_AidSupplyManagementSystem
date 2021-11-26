@@ -81,9 +81,9 @@ public class TransInfoPanel {
 						TransSuccessService.successByAidId(new Integer(tfAidId.getText()));					
 						JOptionPane.showMessageDialog(jp, "更改状态成功", "提示", JOptionPane.PLAIN_MESSAGE);
 						VolunteerFrame.refresh(3);
-						System.out.println("确认成功");
+//						System.out.println("确认成功");
 					} else {
-						System.out.println("取消");
+//						System.out.println("取消");
 					}}}
 		});
 		btnPanel.setBorder(new Flush3DBorder());

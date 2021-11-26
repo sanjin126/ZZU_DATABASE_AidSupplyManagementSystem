@@ -1,14 +1,14 @@
 package com.aidsystem.bean;
 
-public class ItemToType {
+public class ItemToUnit {
 	private String name;
 	private String unit; //物资单位，由志愿者指定
 	
-	public ItemToType() {
+	public ItemToUnit() {
 		super();
 	}
 
-	public ItemToType(String name, String unit) {
+	public ItemToUnit(String name, String unit) {
 		super();
 		this.name = name;
 		this.unit = unit;

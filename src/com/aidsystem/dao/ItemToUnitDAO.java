@@ -3,9 +3,9 @@ package com.aidsystem.dao;
 import java.sql.Connection;
 import java.util.List;
 
-import com.aidsystem.bean.ItemToType;
+import com.aidsystem.bean.ItemToUnit;
 
-public interface ItemToTypeDAO {
+public interface ItemToUnitDAO {
 	/**
 	 * 
 	 * @Description 保存一个物资类别对应信息
@@ -13,7 +13,7 @@ public interface ItemToTypeDAO {
 	 * @param conn
 	 * @param itt
 	 */
-	void insert(Connection conn, ItemToType itt);
+	void insert(Connection conn, ItemToUnit itt);
 	/**
 	 * 
 	 * @Description 删除指定物资名的对应信息
@@ -29,7 +29,7 @@ public interface ItemToTypeDAO {
 	 * @param conn
 	 * @param itt
 	 */
-	void updateItt(Connection conn, ItemToType itt);
+	void updateItt(Connection conn, ItemToUnit itt);
 	/**
 	 * 
 	 * @Description 查询指定name的物资对应信息
@@ -38,7 +38,7 @@ public interface ItemToTypeDAO {
 	 * @param name
 	 * @return 返回一个物资类别对象
 	 */
-	ItemToType getByName(Connection conn, String name);
+	ItemToUnit getByName(Connection conn, String name);
 	/**
 	 * 
 	 * @Description 查询item_to_type表中的所有对应信息
@@ -46,7 +46,7 @@ public interface ItemToTypeDAO {
 	 * @param conn
 	 * @return 返回一个存有所有对应信息对象的列表
 	 */
-	List<ItemToType> getAll(Connection conn);
+	List<ItemToUnit> getAll(Connection conn);
 	/**
 	 * 
 	 * @Description 查询表中共有多少物资类别对应信息

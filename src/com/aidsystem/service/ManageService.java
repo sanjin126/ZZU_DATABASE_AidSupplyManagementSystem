@@ -2,6 +2,7 @@ package com.aidsystem.service;
 
 import java.sql.Connection;
 
+
 import com.aidsystem.bean.TranPerson;
 import com.aidsystem.bean.Volunteer;
 import com.aidsystem.dao.Impl.TranPersonDAOImpl;
@@ -10,7 +11,7 @@ import com.aidsystem.util.JDBCUtils;
 import com.aidsystem.util.StringUtils;
 
 public class ManageService {
-	public static void addVol(String name, String gender, String age, String phone, String address) {
+	public static void addVol(String name, String gender, String age, String phone, String address) throws Exception {
 		Connection conn = null;
 		try {
 			conn = JDBCUtils.getConnection();
@@ -24,6 +25,8 @@ public class ManageService {
 					StringUtils.removeUnimportantChar(address)
 					);
 			volDao.insertVol(conn, vol);
+		} catch (NumberFormatException e) {
+			throw new Exception("请在年龄一栏输入正确的数字哦");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -45,7 +48,7 @@ public class ManageService {
 			
 		}
 	}
-	public static void updateVol(String id, String name, String gender, String age, String phone, String address) {
+	public static void updateVol(String id, String name, String gender, String age, String phone, String address) throws Exception {
 		Connection conn = null;
 		try {
 			conn = JDBCUtils.getConnection();
@@ -60,6 +63,8 @@ public class ManageService {
 					StringUtils.removeUnimportantChar(address)
 					);
 			volDao.updateVol(conn, vol);
+		} catch (NumberFormatException e) {
+			throw new Exception("请在年龄一栏输入正确的数字哦");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -68,7 +73,7 @@ public class ManageService {
 		}
 	}
 	
-	public static void addTrp(String name, String gender, String age, String phone, String area, String numberPlate) {
+	public static void addTrp(String name, String gender, String age, String phone, String area, String numberPlate) throws Exception {
 		Connection conn = null;
 		try {
 			conn = JDBCUtils.getConnection();
@@ -83,6 +88,8 @@ public class ManageService {
 					);
 			TranPersonDAOImpl trpDao = new TranPersonDAOImpl();
 			trpDao.insert(conn, trp);
+		} catch (NumberFormatException e) {
+			throw new Exception("请在年龄一栏输入正确的数字哦");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -106,7 +113,7 @@ public class ManageService {
 		}
 		
 	}
-	public static void updateTrp(String id, String name, String gender, String age, String phone, String area, String numberPlate) {
+	public static void updateTrp(String id, String name, String gender, String age, String phone, String area, String numberPlate) throws Exception {
 		Connection conn = null;
 		try {
 			conn = JDBCUtils.getConnection();
@@ -122,6 +129,8 @@ public class ManageService {
 					StringUtils.removeUnimportantChar(numberPlate)
 					);
 			trpDao.updateTrp(conn, trp);
+		} catch (NumberFormatException e) {
+			throw new Exception("请在年龄一栏输入正确的数字哦");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

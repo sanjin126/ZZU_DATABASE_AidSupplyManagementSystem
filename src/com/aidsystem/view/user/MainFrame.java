@@ -79,7 +79,7 @@ public class MainFrame {
 		btnDem.setFont(new Font("微软雅黑", Font.BOLD, 20));
 		btnDem.addActionListener(new demActionListener());
 //		btnSrh.setFont(new Font("Dialog", Font.BOLD, 15));
-//		btnSrh.addActionListener(new srhActionListener());
+//		btnSrh.addActionListener(new srhActionListener()); 
 		hBox.setPreferredSize(new Dimension(100, 100));
 		hBox.add(l1strut);
 		hBox.add(l2strut);

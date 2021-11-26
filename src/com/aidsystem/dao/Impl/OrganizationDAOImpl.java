@@ -12,8 +12,8 @@ public class OrganizationDAOImpl extends BaseDAO<Organization> implements Organi
 
 	@Override
 	public void insert(Connection conn, Organization org) {
-		String sql = "insert into organization values(?,?,?,?,?,?)";
-		update(conn, sql , null,org.getName(),org.getAddress(),org.getDirector(),org.getPhone(),org.getDescription());
+		String sql = "insert into organization values(?,?,?,?,?)";
+		update(conn, sql , null,org.getName(),org.getAddress(),org.getDirector(),org.getPhone());
 	}
 
 	@Override
@@ -24,8 +24,8 @@ public class OrganizationDAOImpl extends BaseDAO<Organization> implements Organi
 
 	@Override
 	public void updateOrg(Connection conn, Organization org) {
-		String sql = "update organization set name=?,address=?,director=?,phone=?,description=? where id=?";
-		update(conn, sql, org.getName(),org.getAddress(),org.getDirector(),org.getPhone(),org.getDescription(),org.getId());
+		String sql = "update organization set name=?,address=?,phone=?,description=? where id=?";
+		update(conn, sql, org.getName(),org.getAddress(),org.getDirector(),org.getPhone(),org.getId());
 	}
 
 	@Override
@@ -46,14 +46,13 @@ public class OrganizationDAOImpl extends BaseDAO<Organization> implements Organi
 		return getValue(conn, sql);
 	}
 	/**
-	 * set name=?,address=?,director=?,description=?
+	 * set name=?,address=?,director=?
 	 * @author sanjin
 	 */
 	@Override
 	public void checkThroughById(Connection conn, int orgId, Organization org) {
-		String sql = "update organization set name=?,address=?,director=?,description=? where id=?";
-		update(conn, sql, org.getName(),org.getAddress(),org.getDirector(),
-				org.getDescription(),orgId);
+		String sql = "update organization set name=?,address=?,director=? where id=?";
+		update(conn, sql, org.getName(),org.getAddress(),org.getDirector(),orgId);
 	}
 	/**
 	 * 找得到返回id，找不到返回-1
